@@ -30,7 +30,11 @@ t_in_dels = []
 data_all=[]
 t_data_all=[]
 
-chromosome_lengths = [640851, 947102, 1067971, 1200490, 1343557, 1418242, 1445207, 1472805, 1541735, 1687656, 2038340, 2271494, 2925236, 3291936]
+# 3d7
+#chromosome_lengths = [640851, 947102, 1067971, 1200490, 1343557, 1418242, 1445207, 1472805, 1541735, 1687656, 2038340, 2271494, 2925236, 3291936]
+# dd2
+chromosome_lengths = [586228,858032,1033953,1113948,1437425,1352663,1406825,1365744,1475315,1661861,1993040,2167057,2932102,3257645]
+
 telomeric_only = False
 
 # Calculate total length of the genome from lengths above
@@ -154,7 +158,7 @@ def load_data():
 
 	g4s=sorted(g4s,key=lambda x: x[0])
 
-	with open('data/dd2/dd2-crosses.csv', 'r') as recombscsv:
+	with open('data/dd2/dd2-vars.csv', 'r') as recombscsv:
 		r = csv.reader(recombscsv,delimiter=',')
 		for row in r:
 			chm=int(row[0]) # chromosome
@@ -306,7 +310,7 @@ ax1.set_title("All breakpoints (n="+str(len(e[1][0]))+")")
 # ax6.set_title("Telomeric var only (n="+str(len(e[11][0]))+")")
 
 plt.suptitle("Measured breakpoint distance from G4 vs random sample distance from G4\n(probability of chromosome selection proportional to # breakpoints on chromosome)")
-plt.savefig("output/dd2-crosses-1.png")
+plt.savefig("output/dd2-nocrosses-1.png")
 plt.figure(2)
 f, ((ax1,ax2), (ax3,ax4), (ax5,ax6)) = plt.subplots(3, 2)
 f.subplots_adjust(hspace=0.35,wspace=0.4,top=0.9,bottom=0.1,right=0.9,left=0.18)
@@ -337,6 +341,6 @@ ax1.set_title("All breakpoints (n="+str(len(e[0][0]))+")")
 # ax6.boxplot(e[11],labels=labels,showmeans=True)
 # ax6.set_title("Telomeric var only (n="+str(len(e[10][0]))+")")
 plt.suptitle("Measured breakpoint distance from G4 vs random sample distance from G4\n(probability of chromosome selection proportional to size)")
-plt.savefig("output/dd2-crosses-2.png")
+plt.savefig("output/dd2-nocrosses-2.png")
 
 plt.show()
